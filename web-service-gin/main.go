@@ -6,17 +6,17 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func postAlbums(c *gin.Context){
-	var newAlbum album
-	//Call BindJSON to bind the received JSON to newAlbum
+// func postAlbums(c *gin.Context){
+// 	var newAlbum album
+// 	//Call BindJSON to bind the received JSON to newAlbum
 
-	if err := c.BindJSON(&newAlbum); err != nil {
-		return
-	}
-	//add the new album to the slice
-	albums = append(albums, newAlbum)
-	c.IndentedJSON(http.StatusCreated, newAlbum)
-}
+// 	if err := c.BindJSON(&newAlbum); err != nil {
+// 		return
+// 	}
+// 	//add the new album to the slice
+// 	albums = append(albums, newAlbum)
+// 	c.IndentedJSON(http.StatusCreated, newAlbum)
+// }
 
 //make json structure and it's data type
 type album struct {
@@ -35,7 +35,7 @@ var albums = []album{
 func main() {
 	router := gin.Default()
 	router.GET("/albums	", getAlbums) //get the albums slice, and passed it to albums, the endpoint has to be the slice name
-	router.POST("/albums ", postAlbums)
+	// router.POST("/albums ", postAlbums)
 	router.Run("localhost:8080")// root api at localhost:8080 , then the api become localhost:8080/albums to get the json of albums
 }
 
